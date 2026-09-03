@@ -6,6 +6,6 @@ trait UsersApi {
 }
 
 class UsersApiImpl extends UsersApi {
-  val users = List(User(1, "Alice"), User(2, "Bob"))
+  var users = List(User(1, "Alice"), User(2, "Bob"))
   override def getUsers(): List[User] = users
 }

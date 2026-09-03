@@ -1,6 +1,22 @@
-*.class
-*.tasty
-*.log
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+.deder/
+.codeps/temp/
+
+.scala-build/
+.bloop/
+.bsp/
+.basamake/
+
+# here tests run
+tmp/
+
+# flatmark docs output + theme cache
+docs/_site/
+docs/.flatmark-cache/
+
+
+# AI
+docs/superpowers/
+.superpowers/
+
+

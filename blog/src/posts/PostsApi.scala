@@ -1,16 +1,16 @@
 package blog.posts
 
-import blog.users.UsersApi
+//import blog.users.UsersApi
 
 trait PostsApi {
   def getPosts: List[Post]
   def getPost(id: Int): Option[Post]
 }
 
-class PostsApiImpl(usersApi: UsersApi) extends PostsApi {
+class PostsApiImpl extends PostsApi {
   private val posts = List(
-    Post(1, "First Post", "This is the content of the first post.", usersApi.getUser(1).get),
-    Post(2, "Second Post", "This is the content of the second post.", usersApi.getUser(2).get)
+    Post(1, "First Post", "This is the content of the first post."),
+    Post(2, "Second Post", "This is the content of the second post.")
   )
 
   override def getPosts: List[Post] = posts

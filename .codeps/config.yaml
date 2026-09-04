@@ -1,0 +1,7 @@
+# codeps analyzes this repository as one project by default.
+projects:
+  root:
+    root: .
+    source: semanticdb
+    inputs: [.]
+    scope: packages

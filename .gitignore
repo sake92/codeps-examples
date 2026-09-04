@@ -1,6 +1,7 @@
 
 .deder/
-.codeps/temp/
+
+.codeps/out/
 
 .scala-build/
 .bloop/

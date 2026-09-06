@@ -1,6 +1,6 @@
 package blog.posts
 
-import blog.users.UsersApi
+import blog.users.{User, UsersApi}
 
 trait PostsApi {
   def getPosts: List[Post]

@@ -1,5 +1,5 @@
 package blog.users
 
-import blog.posts.Post
+import blog.model.UserId
 
-case class User(id: Int, name: String, posts: List[Post] = List.empty)
+case class User(id: UserId, name: String)

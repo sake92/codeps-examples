@@ -6,6 +6,7 @@ local const blogModules = new CreateScalaModules {
   id = "cli"
   template = new {
     scalaVersion = "3.8.4"
+    semanticdbEnabled = true
   }
   testTemplate = (template.asTest()) {
     deps {

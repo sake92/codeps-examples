@@ -45,6 +45,9 @@ jobs:
       - name: Compile
         run: deder exec -t compile -m cli
 
+      - name: Verify SemanticDB output
+        run: test -n "$(find .deder/out -type f -name '*.semanticdb' -print -quit)"
+
       - name: Install Codeps
         run: |
           curl --fail --location --silent --show-error \

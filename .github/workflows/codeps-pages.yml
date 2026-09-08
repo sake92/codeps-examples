@@ -25,10 +25,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
+
+      - name: Set Homebrew environment
+        run: echo "HOMEBREW_NO_SANDBOX_LINUX=1" >> "$GITHUB_ENV"
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Install Deder
         run: |

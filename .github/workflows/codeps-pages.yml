@@ -46,9 +46,10 @@ jobs:
         run: deder exec -t compile -m cli
 
       - name: Install Codeps
-        run: curl --fail --location --silent --show-error \
-          --output codeps.jar \
-          https://github.com/sake92/codeps/releases/download/main/codeps-cli-main.jar
+        run: |
+          curl --fail --location --silent --show-error \
+            --output codeps.jar \
+            https://github.com/sake92/codeps/releases/download/main/codeps-cli-main.jar
 
       - name: Generate report
         run: java -jar codeps.jar status --commit "$GITHUB_SHA"

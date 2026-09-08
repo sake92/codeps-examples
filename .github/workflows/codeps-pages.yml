@@ -39,6 +39,7 @@ jobs:
       - name: Install Deder
         run: |
           brew tap sake92/tap
+          brew trust sake92/tap
           brew install deder
 
       - name: Compile

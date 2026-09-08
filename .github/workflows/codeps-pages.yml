@@ -1,0 +1,59 @@
+name: Codeps report
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install Deder
+        run: |
+          brew tap sake92/tap
+          brew install deder
+
+      - name: Compile
+        run: deder exec -t compile -m cli
+
+      - name: Install Codeps
+        run: curl --fail --location --silent --show-error \
+          --output codeps.jar \
+          https://github.com/sake92/codeps/releases/download/main/codeps-cli-main.jar
+
+      - name: Generate report
+        run: java -jar codeps.jar status --commit "$GITHUB_SHA"
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload report
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .codeps/out/root
+
+      - name: Deploy report
+        id: deployment
+        uses: actions/deploy-pages@v4

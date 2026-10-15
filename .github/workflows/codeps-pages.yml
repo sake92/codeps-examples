@@ -52,7 +52,7 @@ jobs:
         run: |
           curl --fail --location --silent --show-error \
             --output codeps.jar \
-            https://github.com/sake92/codeps/releases/download/main/codeps-cli-main.jar
+            https://github.com/sake92/codeps/releases/download/v0.6.0/codeps-cli-0.6.0.jar
 
       - name: Generate report
         run: java -jar codeps.jar status --commit "$GITHUB_SHA"
